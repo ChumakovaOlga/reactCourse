@@ -1,0 +1,6 @@
+.send-message-form {
+    background: #ccc;
+    display: flex;
+    box-sizing: border-box;
+    height: 60px;
+}
