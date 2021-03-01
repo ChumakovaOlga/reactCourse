@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import {Route} from 'react-router-dom'
 import './App.css';
-import Greeting from './Greeting/Greeting.js'
-import './Greeting/Greeting.css';
+import Greeting from './Greeting/Greeting'
 import Button from '@material-ui/core/Button';
 import Header from './Header/Header'
-// import TextField from '@material-ui/core/TextField';
-
+import TextField from '@material-ui/core/TextField';
+import ChatList from "./ChatList/ChatList";
 
 
 class App extends Component {
@@ -14,12 +14,15 @@ class App extends Component {
         // создадим ref в поле `textInput` для хранения DOM-элемента
         this.textInput = React.createRef();
     }
-
-
     state = {
         greetings: [
             {text: 'Привет!', name: 'robot'},
             {text: 'Как дела?', name: 'robot'},
+        ],
+        chats: [
+            {person:'Ali Connors'},
+            {person:'Jennifer'},
+            {person:'Sandra Adams'},
         ],
         input: ''
     }
@@ -27,8 +30,9 @@ class App extends Component {
     componentDidMount() {
         this.textInput.current.focus();
     }
-    componentDidUpdate() {
-            if (this.state.greetings[this.state.greetings.length - 1].name === 'me')
+    componentDidUpdate(prevProps, prevState) {
+        if  (prevState.greetings.length < this.state.greetings.length &&
+       this.state.greetings[this.state.greetings.length - 1].name === 'me')
         {
             setTimeout(() =>
                 this.setState(
@@ -37,10 +41,11 @@ class App extends Component {
                     }), 1000)
         }
     }
-    handleClick = (greeting) => {
-        this.sendMessage(greeting)
-        // this.setState({ greetings: [ ...this.state.greetings, {text: greeting, name: 'me'} ] });
-    };
+
+    handleClick = () => {const{input} = this.state;
+        this.sendMessage(input);
+    }
+
     handleChange = (event) => {
         this.setState({input: event.target.value})
     }
@@ -50,72 +55,67 @@ class App extends Component {
             this.setState({greetings: [...this.state.greetings, {text: greeting, name: 'me'}]})
         }
     }
+
     sendMessage = (greeting) => {
-    this.setState({greetings: [...this.state.greetings, {text: greeting,name: 'me'}],
-        input: ''
-    })
+        this.setState({greetings: [...this.state.greetings, {text: greeting,name: 'me'}],
+            input: ''
+        })
     }
-        render() {
+    render() {
         const greetingsText = this.state.greetings.map((greeting, index) =>
             (
-
-                     <Greeting
-                     key = {index}
-                     text = {greeting.text}
-                     name = {greeting.name}
-                     />
-
+                <Greeting
+                    key = {index}
+                    text = {greeting.text}
+                    name = {greeting.name}
+                />
             ))
+        return (
+            <div  id='main' className="layout">
+                <Header/>
+                <Route path="/ChatList" render={() => <h1>List</h1>}/>
+                <Route path="/Greeting" render={() => <h1>Message</h1>} />
 
-     return (
-             <div  id='main' className="layout">
-                 <Header/>
-                  <div className='message-field'>
-                     {greetingsText}
-                   </div>
-                 <div style={{width: '100%', display: 'flex'}}>
+                <div   className='side-bar' >
 
-                     {/*<TextField*/}
-                     {/*    ref={this.textInput}*/}
-                     {/*    name = 'input'*/}
-                     {/*    id="outlined-basic"*/}
-                     {/*    label="Outlined" variant="outlined"*/}
-                     {/*    className='text' type="text"*/}
-                     {/*    onChange={this.handleChange}*/}
-                     {/*    value={this.state.input}*/}
-                     {/*    onKeyUp={(event) =>*/}
-                     {/*          this.handleKeyUp(event, this.state.input)}*/}
-                     {/*/>*/}
+                    {this.state.chats.map((chat, index) => {
+                        return (
+                            <ChatList
+                                key={index}
+                                person={chat.person}
 
-
-                         <input
-                             ref={this.textInput}
-                             name = 'input'
-                                className='text' type="text"
-                                onChange={this.handleChange}
-                                value={this.state.input}
-                                onKeyUp={(event) =>
-                                    this.handleKeyUp(event, this.state.input)}
-                         />
-
-
-
-                         {/*<button className='button'*/}
-                         {/*        onClick={ () => this.handleClick(this.state.input)}*/}
-                         {/*>*/}
-                         {/*    Отправить*/}
-                         {/*</button>*/}
-
-                     <Button variant="contained"
-                             className='button'
-                             onClick={ () => this.handleClick(this.state.input)}
-                     >
-                         Send
-                     </Button>
-
+                            />
+                        )
+                    })}
                  </div>
-             </div>
-     );
+
+                <div className='message-field'>
+                        {greetingsText}
+                       </div>
+
+               <form className='form-item'>
+                <div style={{width: '100%', display: 'flex'}}>
+                    <TextField
+                        inputRef={this.textInput}
+                        name = 'input'
+                        id="outlined-basic"
+                        label="Outlined" variant="outlined"
+                        className='text' type="text"
+                        onChange={this.handleChange}
+                        value={this.state.input}
+                        onKeyUp={(event) =>
+                            this.handleKeyUp(event, this.state.input)}
+                    />
+
+                    <Button variant="contained"
+                            className='button'
+                            onClick={this.handleClick}>
+                        Send
+                    </Button>
+                </div>
+              </form>
+            </div>
+        );
     }
 }
 
