@@ -4,8 +4,9 @@ import './Header.css'
 
 const Header = props => (
     <div className="title">
-        <p><NavLink to="/chatlist">ChatList</NavLink></p>
-       <p><NavLink to={{pathname:"/greeting"}}>ChatMessage</NavLink></p>
+        <p><NavLink to="/">HOME</NavLink></p>
+        <p><NavLink to="/chatlist">CHATLIST</NavLink></p>
+       <p><NavLink to={{pathname:"/greeting"}}>CHATMESSAGE</NavLink></p>
     </div>
 )
 export default Header
