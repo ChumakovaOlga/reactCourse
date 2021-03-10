@@ -12,11 +12,9 @@ import {
 
 export default function AddChatDialog({ visible, onClose, onSubmit }) {
     const [value, setValue] = useState('');
-
     const handleChange = useCallback((e) => {
         setValue(e.target.value);
     }, []);
-
     const handleSubmit = useCallback(() => {
         onSubmit(value);
     }, [onSubmit, value]);

@@ -7,10 +7,8 @@ export const addMessage = (chatId, message) => ({
     chatId,
     message,
 });
-
 export const addMessageThunk = (chatId, message) => (dispatch, getState) => {
     dispatch(addMessage(chatId, message));
-
 
     if (message.author !== AUTHORS.BOT) {
         setTimeout(() => {

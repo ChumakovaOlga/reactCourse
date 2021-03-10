@@ -1,0 +1,23 @@
+.message-field {
+    display: flex;
+    flex-direction: row;
+    height: 70%;
+    width: 61%;
+    margin-left: 350px;
+}
+.message {
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px;
+}
+.message-sender {
+    color: lightslategrey;
+    font-size: 14px;
+}
+
+
+
+
+
+
