@@ -1,7 +1,9 @@
-a.active {
-    font-weight: bold;
-    color: darkblue;
-}
-p {
-    margin-left: 30px;
+.title {
+    height: 77px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 22px;
 }

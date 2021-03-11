@@ -4,7 +4,7 @@ export default class Profile extends React.Component {
     render() {
         return (
                 <div>
-                    <h4>Profile</h4>
+                    <div className='title'>PROFILE</div>
                 </div>
         );
     }

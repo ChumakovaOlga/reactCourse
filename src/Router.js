@@ -1,14 +1,16 @@
-import React from'react'
+import React from 'react'
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Chats from "./components/Chats";
 import Profile from "./components/Profile";
+import './Router.css'
 
 export default function Router() {
     return (
         <BrowserRouter>
+            <div className='nav'>
             <ul>
-                <li>
+                <li className='navLi'>
                     <Link to="/profile">profile</Link>
                 </li>
 
@@ -17,9 +19,10 @@ export default function Router() {
                 </li>
 
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/">home</Link>
                 </li>
             </ul>
+            </div>
 
             <Switch>
                 <Route path="/profile">

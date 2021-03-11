@@ -1,0 +1,29 @@
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+
+}
+.nav li {
+    display: inline;
+    margin-right: 15px;
+
+    color: #fff;
+    cursor: pointer;
+}
+.nav a{
+    text-decoration: none;
+    font-size: 24px;
+    color: #000;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: lavender;
+
+}
+.nav a:hover{
+    color: red;
+    text-decoration: none;
+}

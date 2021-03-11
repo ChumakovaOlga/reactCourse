@@ -3,7 +3,6 @@ import { ADD_CHAT } from "./actions";
 const initialState = {
     chatList: [],
 };
-
 const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CHAT:

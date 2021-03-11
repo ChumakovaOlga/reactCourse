@@ -1,11 +1,8 @@
 import { ADD_MESSAGE } from "./actions";
-import { ADD_CHAT } from "../chats/actions";
 
 const initialState = {
-    // to be stored like this {[chatId]: [{id, text, author}]}
     messageList: {},
 };
-
 const chatsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE: {

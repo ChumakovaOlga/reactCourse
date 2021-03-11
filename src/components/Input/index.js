@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react"
 import { AUTHORS } from "../../utils/constants";
 import { TextField } from '@material-ui/core';
+import './Input.css'
 
 
 export default function Input({ onAddMessage }) {
@@ -26,9 +27,10 @@ export default function Input({ onAddMessage }) {
             textField.current.focus();
         }
     }, []);
-
     return (
-        <form onSubmit={handleSubmit}>
+        <form
+            className='form-item'
+            onSubmit={handleSubmit}>
             <TextField inputRef={textField} value={value} onChange={handleChange} />
             <input type="submit" />
         </form>
