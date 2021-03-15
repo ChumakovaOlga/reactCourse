@@ -1,7 +1,8 @@
+import React from 'react'
 import { Link } from "react-router-dom";
 import './ChatList.css'
-export default function ChatList({ chats, chatId, onAddChat }) {
 
+export default function ChatList({ chats, chatId, onAddChat }) {
     return (
         <div className='side-bar'>
             {chats.map((chat, i) => (

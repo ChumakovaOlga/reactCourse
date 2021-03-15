@@ -1,10 +1,56 @@
 .layout {
-    width: 1000px;
-    outline: 1px solid #ccc;
-    padding: 10px;
     height: 100%;
+    width: 1000px;
     margin: auto;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 10px;
+    background-color: lightslategrey;
+    border-radius: 20px;
 }
+.layout-canvas {
+    height: calc(100% - 100px);
+    width: 100%;
+    display: flex;
+}
+.layout-left-side {
+    display: None;
+}
+.layout-right-side {
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (min-width: 650px){
+    .layout {
+        width: 50%;
+    }
+
+    .layout-canvas {
+        height: 50%;
+        width: 100%;
+        display: flex;
+    }
+
+    .layout-right-side {
+        width: 70%;
+    }
+
+    .layout-left-side {
+        display: block;
+        height: 100%;
+        width: 30%;
+    }
+
+    .layout {
+        width: 50%;
+    }
+
+    .layout-canvas {
+        height: 50%;
+    }
+}
+
+

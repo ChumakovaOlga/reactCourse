@@ -1,12 +1,4 @@
-.chatList {
-display: flex;
-    justify-content: flex-start;
-}
-.side-bar {
-    float: left;
-    padding: 25px;
-    width: 190px;
-}
+
 .addChat{
     padding: 8px 10px;
     border: 1px solid #ccc;
@@ -20,4 +12,8 @@ display: flex;
 }
 .addChat:active{
     outline: none;
+}
+.chatList {
+    margin-left: 25px;
+    padding: 5px 10px;
 }

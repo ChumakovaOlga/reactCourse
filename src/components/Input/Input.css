@@ -1,9 +1,10 @@
 .form-item{
-    height: 77px;
-    background-color: white;
-    margin-bottom: 12px;
+    height: 40px;
+    background-color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    margin-top: 100px;
+
 }
