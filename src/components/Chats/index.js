@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useCallback, useMemo} from "react";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams , Redirect} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import MessagesList from "../MessagesList";
 import Input from "../Input";
@@ -64,23 +64,28 @@ export default function Chats() {
     }
     return (
             <div className='layout'>
-                <div>
-                        <div>
-                            <Header/>
+                <Header/>
+                <div className='layout-canvas'>
+                        <div className='layout-left-side'>
+
                             <ChatList
                                 chats={chats}
                                 chatId={params.chatId} onAddChat={handleOpen} />
                         </div>
-                    <div>
+                    <div className='layout-right-side'>
                         <MessagesList messages={messageList} />
-                        <Input onAddMessage={sendMessage} />
+
                     </div>
+
                 </div>
+                <Input onAddMessage={sendMessage} />
                     <AddChatDialog
                         visible={visible}
                         onClose={handleClose}
                         onSubmit={addNewChat}
                     />
+
             </div>
+
     );
 }
